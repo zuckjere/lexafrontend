@@ -1,96 +1,210 @@
-# LegalTech Frontend
+🏟️ RefMaster – Frontend Vue 3
+✨ Description
 
-Frontend de l'application **LegalTech**, développé avec **Vue 3**, **Vite**, **TailwindCSS** et **Axios** pour la communication avec le backend.
+RefMaster est une application web destinée aux fédérations sportives et clubs pour gérer les arbitres, planifier les matchs et suivre leurs performances.
+Cette version couvre uniquement le frontend, développé avec Vue 3, Axios et TailwindCSS, et prépare l’interaction avec un futur backend.
 
----
+L’objectif est de fournir une interface moderne, intuitive et responsive, pour faciliter la gestion des arbitres.
 
-## 🚀 Technologies utilisées
+📦 Technologies utilisées
 
-- [Vue 3](https://vuejs.org/) – Framework JavaScript moderne et réactif.
-- [Vite](https://vitejs.dev/) – Bundler rapide pour le développement.
-- [TailwindCSS](https://tailwindcss.com/) – Framework CSS utilitaire pour un design rapide et responsive.
-- [Axios](https://axios-http.com/) – Client HTTP pour interagir avec le backend.
-- [Phosphor Icons](https://phosphoricons.com/) – Bibliothèque d’icônes pour l’interface utilisateur.
+🌐 Frontend :
 
----
+🖖 Vue 3
+ – Framework SPA
 
-## 📦 Installation
+🛣️ Vue Router
+ – Navigation
 
-1. **Cloner le repo**
+⚡ Axios
+ – Appels API
 
-```bash
-git clone https://github.com/TON_USER/legaltech-frontend.git
-cd legaltech-frontend
-Installer les dépendances
+🎨 TailwindCSS
+ – Mise en page et design
+
+🏗️ Build / Dev :
+
+🚀 Vite
+ – Bundler rapide et serveur de développement
+
+⚙️ Fonctionnalités du frontend
+
+🏠 Page d’accueil (Home) avec présentation de RefMaster
+
+📊 Dashboard avec :
+
+👨‍⚖️ Liste des arbitres
+
+📅 Tableau de matchs
+
+📈 Statistiques simples
+
+🔐 Authentification simple : Login / Inscription
+
+🧩 Composants réutilisables :
+
+🔘 Boutons
+
+🃏 Cartes d’arbitres
+
+📋 Tableaux de matchs
+
+📱 Design responsive pour desktop et mobile
+
+🏗️ Structure du projet
+frontend/
+├─ public/                  # Fichiers statiques
+├─ src/
+│  ├─ assets/               # Images, logos, icônes
+│  ├─ components/           # Composants réutilisables
+│  │   ├─ Navbar.vue
+│  │   ├─ Footer.vue
+│  │   ├─ CardArbitre.vue
+│  │   └─ TableMatch.vue
+│  ├─ pages/                # Pages principales
+│  │   ├─ Home.vue
+│  │   ├─ Dashboard.vue
+│  │   ├─ Login.vue
+│  │   └─ Register.vue
+│  ├─ router/               # Configuration Vue Router
+│  │   └─ index.js
+│  ├─ services/             # Services Axios pour API
+│  │   ├─ arbitres.js
+│  │   └─ matchs.js
+│  ├─ App.vue
+│  └─ main.js
+├─ package.json
+└─ vite.config.js
+
+📌 Pages et composants principaux
+1. 🏠 Home.vue
+
+Présentation de l’application RefMaster
+
+Boutons Créer un compte / Se connecter
+
+Image ou illustration de droite
+
+Layout centré avec Tailwind flex items-center justify-center
+
+2. 🔑 Login.vue
+
+Formulaire de connexion
+
+Validation des champs
+
+Bouton Connexion
+
+Lien vers la page d’inscription
+
+3. 📝 Register.vue
+
+Formulaire d’inscription
+
+Validation (email, mot de passe)
+
+Redirection vers Login après succès
+
+4. 📊 Dashboard.vue
+
+Affichage des arbitres et matchs
+
+Filtres (par date, catégorie)
+
+Bouton Ajouter arbitre ou Planifier match
+
+5. 🧩 Components
+
+🖥️ Navbar.vue : navigation principale
+
+📄 Footer.vue : informations et liens utiles
+
+🃏 CardArbitre.vue : carte avec photo et infos arbitre
+
+📋 TableMatch.vue : tableau avec les matchs programmés
+
+🌐 Services Axios
+
+Exemple de service pour les arbitres : src/services/arbitres.js
+
+import axios from 'axios';
+
+const API_URL = 'http://localhost:8000/api';
+
+export const getArbitres = async () => {
+  const response = await axios.get(`${API_URL}/arbitres`);
+  return response.data;
+};
+
+export const createArbitre = async (arbitre) => {
+  const response = await axios.post(`${API_URL}/arbitres`, arbitre);
+  return response.data;
+};
+
+export const updateArbitre = async (id, arbitre) => {
+  const response = await axios.put(`${API_URL}/arbitres/${id}`, arbitre);
+  return response.data;
+};
+
+export const deleteArbitre = async (id) => {
+  const response = await axios.delete(`${API_URL}/arbitres/${id}`);
+  return response.data;
+};
+
+🚀 Installation et lancement
+
+Cloner le projet :
+
+git clone <URL_DU_REPO>
+cd frontend
+
+
+Installer les dépendances :
 
 npm install
 
 
-2.Lancer le serveur de développement
+Lancer le serveur de développement :
 
 npm run dev
 
 
-Le projet sera accessible sur http://localhost:5173
- par défaut.
+Accéder à l’application :
 
-3.⚙️ Configuration
+http://localhost:5173
 
-Pour connecter le frontend au backend, crée un fichier .env à la racine :
+🎨 Design et layout
 
-VITE_API_URL=http://localhost:3333/api
+Layout responsive avec TailwindCSS
 
+Composants réutilisables et modulables
 
-Toutes les variables d’environnement doivent commencer par VITE_ pour être accessibles dans le frontend.
+Palette de couleurs :
 
-4.🗂 Structure du projet
-legaltech-frontend/
-├─ public/           # Assets statiques (images, favicon...)
-├─ src/
-│  ├─ assets/        # Images, SVG, CSS supplémentaires
-│  ├─ components/    # Composants Vue réutilisables
-│  ├─ pages/         # Pages principales de l'application
-│  ├─ router/        # Configuration Vue Router
-│  ├─ store/         # Gestion d'état (Pinia ou Vuex)
-│  ├─ services/      # Services API (Axios)
-│  └─ App.vue
-├─ index.html
-├─ package.json
-└─ vite.config.js
+💙 Bleu clair pour l’interface (bg-sky-400)
 
-5.📡 Communication avec le backend
+⚪ Boutons blancs et bordures bleues
 
-Exemple de configuration Axios dans src/services/api.js :
+✨ Texte clair (text-white ou text-gray-700)
 
-import axios from 'axios'
+🔜 Prochaines étapes
 
-const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL
-})
+🏗️ Développement du backend (API REST ou GraphQL)
 
-export default api
+🔐 Intégration JWT pour sécuriser l’accès
 
+🔍 Ajout de filtres, recherche et pagination
 
-Utilisation dans un composant Vue :
+📢 Notifications et alertes pour les matchs
 
-import api from '../services/api'
+🧪 Tests unitaires et E2E
 
-api.get('/users')
-   .then(res => console.log(res.data))
-   .catch(err => console.error(err))
+💡 Conseils pour le frontend
 
-📝 Scripts disponibles
-Commande	Description
-npm run dev	Démarre le serveur de développement
-npm run build	Compile le projet pour la production
-npm run preview	Prévisualise la build de production
-🔖 Licence
+🧩 Garder les composants découplés pour faciliter la maintenance
 
-Ce projet est sous licence MIT.
+🔌 Préparer les services Axios pour une migration backend transparente
 
-👨‍💻 Auteur
+🎨 Utiliser TailwindCSS pour des prototypes rapides et responsive
 
-TON NOM / PSEUDO
-Email: zuckjeremy0@gmail.com
-
-GitHub: https://github.com/jeremyzuck
+⏱️ Prévoir des states de chargement / erreurs pour chaque appel API
