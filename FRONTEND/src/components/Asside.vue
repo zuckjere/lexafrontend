@@ -1,18 +1,24 @@
 <script setup>
 import { ref } from 'vue'
 
+// Définir les items du menu
 const menuItems = ref([
-  { title: 'Tableau de bord', icon: 'ph-bold ph-house' },
-  { title: 'Gestion des arbitres', icon: 'ph-bold ph-user-circle' },
-  { title: 'Gestion des matchs', icon: 'ph-bold ph-soccer-ball' },
-  { title: 'Statistiques', icon: 'ph-bold ph-chart-pie' },
-  { title: 'Exportation', icon: 'ph-bold ph-file-arrow-down' },
+  { title: 'Tableau de bord', icon: 'ph-bold ph-house', key: 'dashboard' },
+  { title: 'Gestion des arbitres', icon: 'ph-bold ph-user-circle', key: 'referees' },
+  { title: 'Gestion des matchs', icon: 'ph-bold ph-soccer-ball', key: 'matches' },
+  { title: 'Statistiques', icon: 'ph-bold ph-chart-pie', key: 'stats' },
+  { title: 'Exportation', icon: 'ph-bold ph-file-arrow-down', key: 'export' },
 ])
 
+// Index actif
 const activeIndex = ref(0)
+
+// Émettre la clé de la section active
+const emit = defineEmits(['update:activeSection'])
 
 const setActive = (index) => {
   activeIndex.value = index
+  emit('update:activeSection', menuItems.value[index].key)
 }
 </script>
 
