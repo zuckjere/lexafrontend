@@ -14,7 +14,7 @@ const isOpen = ref(false)
       </div>
 
       <nav class="hidden md:flex space-x-1">
-        <a href="#" class="px-4 py-2 rounded-lg text-slate-300 font-medium hover:text-white hover:bg-slate-700/50 transition-all duration-300">
+        <a href="#" class="px-4 py-2 rounded-lg text-slate-300 font-medium hover:text-white hover:bg-slate-700/50 transition-all duration-300 ">
           <i class="ph-bold ph-house inline-block w-4 h-4 mr-2"></i>Accueil
         </a>
         <a href="#" class="px-4 py-2 rounded-lg text-slate-300 font-medium hover:text-white hover:bg-slate-700/50 transition-all duration-300">
